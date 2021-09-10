@@ -1,0 +1,18 @@
+{
+  "name": "aws-jsapiv3-s3-sample",
+  "version": "0.0.0",
+  "devDependencies": {
+    "@types/node": "^14.0.0",
+    "typescript": "4.3.5"
+  },
+  "engines": {
+    "node": ">14.0.0"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.29.0"
+  }
+}

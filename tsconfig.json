@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "sourceRoot": "src/",
+        "outDir": "dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "target": "esnext",
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "module": "CommonJS",
+        "importHelpers": true,
+        "types": ["node"]
+    }
+}
