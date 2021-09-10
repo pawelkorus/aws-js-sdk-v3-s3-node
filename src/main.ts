@@ -1,4 +1,4 @@
-import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3'
+import { S3Client, GetObjectCommand, PutObjectCommand, CreateBucketCommand } from '@aws-sdk/client-s3'
 import { Readable } from 'stream';
 
 (async () => {
@@ -17,6 +17,12 @@ let client:S3Client = new S3Client({
     forcePathStyle: true,
     tls: false
 })
+
+let bucketRequest:CreateBucketCommand = new CreateBucketCommand({
+    Bucket: BUCKET_NAME
+})
+
+await client.send(bucketRequest)
 
 let putRequest:PutObjectCommand = new PutObjectCommand({
     Bucket: BUCKET_NAME,
