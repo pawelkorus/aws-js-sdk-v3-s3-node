@@ -7,9 +7,7 @@ const BUCKET_NAME = 'test'
 const OBJECT_NAME = 'sampleObject'
 const SAMPLE_CONTENT = 'some sample content'
 
-// https://stackoverflow.com/a/63639280
-// S3Client imported from commonjs library, so no type information
-var client:InstanceType<typeof S3Client> = new S3Client({
+let client:S3Client = new S3Client({
     endpoint: "http://localhost:9000",
     region: 'us-east-1', 
     credentials: {
@@ -20,7 +18,7 @@ var client:InstanceType<typeof S3Client> = new S3Client({
     tls: false
 })
 
-let putRequest = new PutObjectCommand({
+let putRequest:PutObjectCommand = new PutObjectCommand({
     Bucket: BUCKET_NAME,
     Key: OBJECT_NAME,
     Body: SAMPLE_CONTENT
@@ -28,7 +26,7 @@ let putRequest = new PutObjectCommand({
 
 await client.send(putRequest)
 
-let getRequest = new GetObjectCommand({
+let getRequest:GetObjectCommand = new GetObjectCommand({
     Bucket: BUCKET_NAME,
     Key: OBJECT_NAME
 })
