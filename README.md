@@ -1,4 +1,4 @@
-# AWS Javascript APIv3 s3
+# AWS Javascript SDK v3 s3 nodejs
 
 Sample nodejs application implementing basic S3 object storage operations (put/get object) using Typescipt and AWS Javascript API V3
 
