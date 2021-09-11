@@ -1,5 +1,5 @@
 {
-  "name": "aws-jsapiv3-s3-sample",
+  "name": "aws-js-sdk-v3-s3-node",
   "version": "0.0.0",
   "devDependencies": {
     "@types/node": "^14.0.0",
