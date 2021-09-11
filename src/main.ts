@@ -18,13 +18,22 @@ let client:S3Client = new S3Client({
     tls: false
 })
 
-let bucketRequest:CreateBucketCommand = new CreateBucketCommand({
+const bucketRequest = new CreateBucketCommand({
     Bucket: BUCKET_NAME
 })
 
-await client.send(bucketRequest)
+try {
+    await client.send(bucketRequest)
+} catch(error) {
+    const { httpStatusCode, requestId, cfId, extendedRequestId } = error.$metadata;
+    if(409 == httpStatusCode) {
+        console.log("Bucket already exists")
+    } else {
+        console.error(error)
+    }
+}
 
-let putRequest:PutObjectCommand = new PutObjectCommand({
+let putRequest = new PutObjectCommand({
     Bucket: BUCKET_NAME,
     Key: OBJECT_NAME,
     Body: SAMPLE_CONTENT
@@ -32,7 +41,7 @@ let putRequest:PutObjectCommand = new PutObjectCommand({
 
 await client.send(putRequest)
 
-let getRequest:GetObjectCommand = new GetObjectCommand({
+let getRequest = new GetObjectCommand({
     Bucket: BUCKET_NAME,
     Key: OBJECT_NAME
 })
